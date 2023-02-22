@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{% block title %}Welcome our shop!{% endblock %}</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{asset("styles/style.css")}}" />
+</head>
+<body>
+
+    <!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+  <!-- Container wrapper -->
+  <div class="container">    
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent1"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-sm-0" href="{{path('homepage')}}">
+        <img
+          src="uploads/logo.png"
+          height="55"
+          alt="Logo"
+          loading="lazy"
+          ><img/>
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link " href="{{path('homepage')}}">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('product_show')}}">Product</a>
+        </li>
+      </ul>
+      <!-- Left links -->      
+    </div>
+    <!-- Collapsible wrapper -->
+    
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <ul class="nav navbar-nav navbar-right">
+        {% if app.user %}
+
+ <!-- Icon -->
+      <a class="nav-link me-3" href="{{path('app_cart')}}">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+
+        <a class="nav-link me-3" href="{{ path('app_logout') }}"><i class="fas fa-sign-in-alt"></i></a>
+         <!-- User -->
+<li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                        
+                        <i class="fas fa-user-circle fa-2x"></i>
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                                <i class="fas fa-user-circle"></i>
+                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">{{app.user.name}}</span>
+                            <small class="text-muted">user</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <span class="d-flex align-items-center align-middle">
+                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                          <span class="flex-grow-1 align-middle">Billing</span>
+                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </li>
+      
+       <!--/ User -->
+        {% else %}
+        <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
+        <li>
+          <a class="nav-link" href="{{ path('app_login') }}">Register</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <!-- Right elements -->
+    <nav>
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+              </ul>
+            </div>
+          </nav>
+    
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <div style="height: 60px"></div>
+
+{% block body %}
+ <!--Main layout-->
+<main>
+<div class="container">
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #607D8B">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Categories:</a>
+
+    <!-- Toggle button -->
+    <button 
+       class="navbar-toggler" 
+       type="button" 
+       data-bs-toggle="collapse" 
+       data-bs-target="#navbarSupportedContent2">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Link -->
+        <li class="nav-item acitve">
+          <a class="nav-link text-white" href="#">All</a>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <form class="w-auto py-1" style="max-width: 12rem">
+        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
+      </form>
+
+    </div>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+  
+<!-- Products -->
+  <section>
+  <div class="text-center">
+    <div class="row">
+      {% for p in products %}
+        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            {% set img = p.image %}
+            <img src="{{asset('uploads/'~img)}}"
+              class="w-100" />
+          </div>
+          <div class="card-body">
+            <a href="{{path('product_read',{"id":p.id})}}" class="text-reset">
+              <h5 class="card-title mb-2">{{p.name}}</h5>
+            </a>
+            <h6 class="mb-3 price">{{p.price}}$</h6>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+   
+  </div>
+</section>
+</div>
+</main>
+ <!--Main layout-->
+
+
+{% endblock %}
+
+<footer class="text-center text-white mt-4" style="background-color: #607D8B">
+  
+  <hr class="text-dark">
+  
+  <div class="container">
+    <!-- Section: Social media -->
+    <section class="mb-3">
+      
+      <!-- Facebook -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- YouTube -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-youtube"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #E0E0E0">
+    © 2023 Copyright: mdbootstrap
+  </div>
+  <!-- Copyright -->
+</footer>
+</body>
+</html>
+
